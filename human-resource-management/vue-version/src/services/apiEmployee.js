@@ -1,10 +1,16 @@
-import { getFakeEmployee } from '@/utils/employeeFakeHelper';
-
+/*
+ * @Date: 2024-05-31 10:08:46
+ * @LastEditors: kenan
+ * @LastEditTime: 2024-05-31 15:38:47
+ */
+import supabase from '@/utils/supabase'
 export async function getEmployees() {
-  // Mock employees with faker js
-  const employees = Array.from({ length: 10 }, () => getFakeEmployee());
+  let { data: employee, error } = await supabase.from('employee').select('*')
 
-  return employees;
+  if (error) {
+    throw new Error(error.message)
+  }
+  return employee
 }
 
 export async function getEmployee(id) {}

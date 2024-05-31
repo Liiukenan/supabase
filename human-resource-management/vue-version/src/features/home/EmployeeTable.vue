@@ -1,3 +1,8 @@
+<!--
+ * @Date: 2024-05-31 10:08:46
+ * @LastEditors: kenan
+ * @LastEditTime: 2024-05-31 10:59:01
+-->
 <template>
   <Loading v-if="isLoading" />
   <ErrorPage v-else-if="error" :error-message="error.message" />
@@ -51,7 +56,6 @@ const filteredEmployees = computed(() => {
   if (!searchQuery) {
     return employees.value;
   }
-
   return employees.value.filter((employee) => {
     return employee.name.includes(searchQuery.value);
   });
